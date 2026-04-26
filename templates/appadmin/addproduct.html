@@ -1,0 +1,36 @@
+{% extends "appadmin/base.html" %}
+{% block content %}
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">Product Showcase
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<section class="home-about-area section-gap" id="about">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 col-md-12 home-about-right relative">
+                <form class="form-wrap" method="post" enctype="multipart/form-data">
+                    {%csrf_token%}
+                    <h4 class="text-white pb-20">Add Product!</h4>
+                    <input type="text" name="pname" class="form-control" placeholder="Product name" required>
+                    <textarea name="pdescription" class="form-control" placeholder="Product details" required></textarea>
+                    <input type="file" name="pimage" class="form-control" required>
+                    <input type="submit" class="primary-btn" value="Save"/>
+                    <label class="text-info">{{message}}</label>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

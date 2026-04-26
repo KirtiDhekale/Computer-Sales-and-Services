@@ -1,0 +1,59 @@
+{% extends "appadmin/base.html" %}
+{% block content %}
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">View Enquiries</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<section class="home-about-area section-gap" id="about">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-12 col-md-12 home-about-right relative">
+                <form class="form-wrap" method="post">
+                    {%csrf_token%}
+                    <h4 class="text-white pb-20">Enquiry Master</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-white"
+                               style="width: 100%; white-space: wrap;">
+                            <tr class="success">
+                                <th>Sender</th>
+                                <th>Mobile Number</th>
+                                <th>Subject</th>
+                                <th>Action</th>
+                            </tr>
+                            {% for message in messages %}
+                            <tr>
+                                <td>
+                                    {{message.sname}}
+                                </td>
+                                <td>
+                                    {{message.smobile}}
+                                </td>
+                                <td>
+                                    {{message.smessage}}
+                                </td>
+                                <td>
+                                    <input type="hidden" name="eid" value="{{message.eid}}">
+                                    <input type="submit" class="btn btn-danger"
+                                           value="Delete ">
+                                    <label class="text-danger">{{msg}}</label>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

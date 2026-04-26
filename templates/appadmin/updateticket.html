@@ -1,0 +1,89 @@
+{% extends "appadmin/base.html" %}
+{% block content %}
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">Update Ticket
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<section class="home-about-area section-gap" id="about">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 col-md-12 home-about-right relative">
+                <form class="form-wrap" method="post">
+                    {%csrf_token%}
+                    <h4 class="text-white pb-20">Update Status!</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-white"
+                               style="width: 100%; white-space: nowrap;">
+                            <tr>
+                                <th>
+                                    <label class="text-white">Ticket Date</label>
+                                </th>
+                                <td>{{ticket.tdate}}</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label class="text-white">Product Name</label>
+                                </th>
+                                <td>{{ticket.pname}}</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label class="text-white">Customer Name</label>
+                                </th>
+                                <td>{{ticket.cname}}</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label class="text-white">Mobile</label>
+                                </th>
+                                <td>{{ticket.cmobile}}</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label class="text-white">Address</label>
+                                </th>
+                                <td>{{ticket.caddress}}</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label class="text-white">Problem</label>
+                                </th>
+                                <td>{{ticket.cmessage}}</td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <label class="text-white">Remark</label>
+                                </th>
+                                <td>
+                                    <textarea name="tstatus" class="form-control" placeholder="Enter your remark here"
+                                              required>{{ticket.tstatus}}</textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" rowspan="2">
+                                    <input type="submit" class="primary-btn" value="Update"/><br>
+                                    <label class="text-info">{{message}}</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

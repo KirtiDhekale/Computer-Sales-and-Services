@@ -1,0 +1,79 @@
+{% extends "appadmin/base.html" %}
+{% block content %}
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">View Ticket</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<section class="home-about-area section-gap" id="about">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-12 col-md-12 home-about-right relative">                
+                    <h4 class="text-white pb-20">Ticket Master</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover text-white"
+                               style="width: 100%; white-space: wrap;">
+                            <tr class="success">
+                                <th>Date</th>
+                                <th>Product</th>
+                                <th>Customer Name</th>
+                                <th>Customer Mobile</th>
+                                <th>Customer Address</th>
+                                <th>Problem</th>
+                                <th>Status</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                            {% for ticket in tickets %}
+                            <tr>
+                                <td>
+                                    {{ticket.tdate}}
+                                </td>
+                                <td>
+                                    {{ticket.pname}}
+                                </td>
+                                <td>
+                                    {{ticket.cname}}
+                                </td>
+                                 <td>
+                                    {{ticket.cmobile}}
+                                </td>
+                                 <td>
+                                    {{ticket.caddress}}
+                                </td>
+                                 <td>
+                                    {{ticket.cmessage}}
+                                </td>
+                                 <td>
+                                    {{ticket.tstatus}}
+                                </td>
+                                <td>
+                                    <a href="/appadmin/updateticket/{{ticket.tid}}">Update Status</a>
+                                </td>
+                                <td>
+								<form class="form-wrap" method="post">
+                                {%csrf_token%}
+                                    <input type="hidden" name="tid" value="{{ticket.tid}}">
+                                    <input type="submit" class="btn btn-danger"
+                                           value="Delete ">
+								</form>
+                                    <label class="text-danger">{{message}}</label>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

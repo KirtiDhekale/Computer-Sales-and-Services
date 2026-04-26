@@ -1,0 +1,50 @@
+{% extends "appuser/base.html" %}
+{% block content %}
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">Product Showcase
+                </h1>
+                <p class="text-white link-nav"><a href="/">Home </a><span class="lnr lnr-arrow-right"></span><a
+                        href="products">Product Showcase</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<!-- Start service Area -->
+<section class="service-area section-gap" id="service">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 pb-30 header-text text-center">
+                <h1 class="mb-10">Our Area of Expertise</h1>
+                <p>
+                    Who are in extremely love with eco friendly system..
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            {% for product in productss %}
+            <div class="col-lg-4">
+                <div class="single-service">
+                    <div class="thumb">
+                        <img src="/media/product/{{product.pname}}.jpg" alt="">
+                    </div>
+                    <h4>{{product.pname}}</h4>
+                    <p>
+                        {{product.pdescription}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- End service Area -->
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "appuser/base.html" %}
+{% block content %}
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">Registration Form
+                </h1>
+                <p class="text-white link-nav"><a href="/">Home </a><span class="lnr lnr-arrow-right"></span><a
+                        href="registration">Registration Form</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End banner Area -->
+
+<section class="home-about-area section-gap" id="about">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-6 col-md-12 home-about-right relative">
+                <form class="form-wrap" method="post">
+                    {%csrf_token%}
+                    <h4 class="text-white pb-20">Register Here!</h4>
+                    <input type="text" name="cname" class="form-control" placeholder="Cutomer name" required>
+                    <input type="text" name="cmobile" class="form-control" placeholder="Mobile number" maxlength="10"
+                           pattern="[789][0-9]{9}" required>
+                    <textarea name="caddress" class="form-control" placeholder="Address" required></textarea>
+                    <input type="password" name="cpassword" class="form-control" placeholder="Password" required>
+                    <input type="submit" class="primary-btn" value="Submit"/>
+                    <label class="text-danger">{{message}}</label>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
